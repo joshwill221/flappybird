@@ -52,11 +52,17 @@ var mainState = {
         
         /* Controls */
         
-        // Call the 'jump' function when the spacekey is hit
+        // Call the 'jump' function when a key is hit
         var spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+        
+        // Spacebar
         spaceKey.onDown.add(this.jump, this);
         
+        // Mouse click
+        game.input.onDown.add(this.jump, this);
+        
         /* Sounds */
+        // Add jump sound
         this.jumpSound = game.add.audio('jump');
     },
     
