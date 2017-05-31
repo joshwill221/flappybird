@@ -28,7 +28,7 @@ var mainState = {
             
             // Center the game horizontally and vertically
             game.scale.pageAlignHorizontally = true;
-            game.scale.pageAlignVertically = true;
+            // game.scale.pageAlignVertically = true;
             
         }
         
