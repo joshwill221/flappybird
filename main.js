@@ -16,6 +16,22 @@ var mainState = {
         // This function is called after the preload function
         // Here we set up the game, display sprites, etc.
         
+        // If this is not a desktop (so it's a mobile device)
+        if (game.device.desktop == false) {
+            // Set the scaling mode to SHOW_ALL to show all the game
+            game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+            
+            // Set a minimum and maximum size for the game
+            // Here the minimum is half the game size
+            // And the maximum is the original game size
+            game.scale.setMinMax(game.width/2, game.height/2, game.width, game.height);
+            
+            // Center the game horizontally and vertically
+            game.scale.pageAlignHorizontally = true;
+            game.scale.pageAlignVertically = true;
+            
+        }
+        
         // Change the background color of the game to blue
         game.stage.backgroundColor = '#71c5cf';
         
@@ -35,7 +51,7 @@ var mainState = {
         this.bird.body.gravity.y = 1000;
         
         // Move the anchor to the left and downward
-          this.bird.anchor.setTo(-0.2, 0.5);
+        this.bird.anchor.setTo(-0.2, 0.5);
         
         /* Pipes */
         
@@ -58,7 +74,7 @@ var mainState = {
         // Spacebar
         spaceKey.onDown.add(this.jump, this);
         
-        // Mouse click
+        // Call the 'jump' function when we tap/click on the screen
         game.input.onDown.add(this.jump, this);
         
         /* Sounds */
@@ -173,7 +189,7 @@ var mainState = {
 };
 
 // Initialize Phaser, and create a 400px by 490px game
-var game = new Phaser.Game(400, 490, Phaser.AUTO, 'phaser-game');
+var game = new Phaser.Game(400, 490);
 
 // Add the 'mainState' and call it 'main'
 game.state.add('main', mainState);
